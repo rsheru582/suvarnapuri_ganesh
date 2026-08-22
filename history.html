@@ -16,14 +16,14 @@
     .card-glass { background: rgba(30, 12, 18, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255, 215, 0, 0.2); }
   </style>
 </head>
-<body class="antialiased">
+<body class="antialiased selection:bg-orange-500 selection:text-white">
 
   <!-- NAVBAR -->
   <nav class="sticky top-0 z-50 card-glass border-b border-orange-900/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         <a href="index.html" class="flex items-center space-x-3">
-          <img src="GANESH TRANS.png" alt="Logo" class="w-12 h-12 object-contain rounded-full border border-amber-400/40">
+          <img src="GANESH TRANS.jpg" onerror="this.src='GANESH TRANS.png'" alt="Logo" class="w-12 h-12 object-contain rounded-full border border-amber-400/40">
           <div>
             <span class="font-heading text-lg font-bold text-amber-300 block leading-tight">SUVARNAPURI FRIENDS YOUTH</span>
             <span class="text-xs uppercase tracking-widest text-orange-400 font-semibold">SOAN</span>
@@ -36,7 +36,7 @@
           <a href="members.html" class="hover:text-amber-400 transition">Youth Members</a>
           <a href="contact.html" class="hover:text-amber-400 transition">Location</a>
         </div>
-        <button id="menuBtn" class="md:hidden text-2xl text-amber-400"><i class="fa-solid fa-bars"></i></button>
+        <button id="menuBtn" class="md:hidden text-2xl text-amber-400" aria-label="Toggle Menu"><i class="fa-solid fa-bars"></i></button>
       </div>
     </div>
     <div id="mobileMenu" class="hidden md:hidden card-glass px-6 py-4 space-y-3">
@@ -53,84 +53,86 @@
     <span class="text-xs uppercase tracking-widest text-orange-400 font-semibold">Devotion • Unity • Tradition</span>
     <h1 class="text-3xl sm:text-5xl font-heading font-bold gold-gradient mt-2">The Journey of Suvarnapuri Friends Youth</h1>
     <p class="text-amber-100/80 text-sm sm:text-base mt-3">
-      Built purely on the strength of friendship and selfless service by all youth members of Suvarnapuri Friends Youth Soan.
+      Built purely on the strength of friendship, brotherhood, and selfless service by all youth members of Suvarnapuri Friends Youth Soan.
     </p>
   </section>
 
   <!-- HISTORY DETAILS & TIMELINE -->
-  <section class="py-8 max-w-4xl mx-auto px-4 space-y-8 mb-16">
+  <section class="py-6 max-w-5xl mx-auto px-4 sm:px-6 space-y-10 mb-16">
     
-    <div class="card-glass p-6 sm:p-8 rounded-2xl">
+    <!-- Introduction Card -->
+    <div class="card-glass p-6 sm:p-8 rounded-2xl border-l-4 border-l-amber-500">
       <div class="flex items-center space-x-3 mb-3">
-        <span class="p-2 rounded-lg saffron-gradient-bg text-white"><i class="fa-solid fa-hand-holding-heart"></i></span>
+        <span class="p-2.5 rounded-xl saffron-gradient-bg text-white"><i class="fa-solid fa-hand-holding-heart"></i></span>
         <h3 class="font-heading font-bold text-xl text-amber-300">How It All Began</h3>
       </div>
-      <p class="text-amber-100/80 text-sm leading-relaxed">
-        Suvarnapuri Friends Youth in Soan was formed with one single goal: to unite the youth of our community through the sacred occasion of Ganesh Navaratri. With no individual leadership or hierarchy, all youth members come together as one family to organize the celebrations, manage the pandap, prepare prasadams, and serve the people.
+      <p class="text-amber-100/80 text-sm sm:text-base leading-relaxed">
+        Suvarnapuri Friends Youth in Soan was formed with one sacred goal: to unite the youth of our village through the celebration of Ganesh Navaratri. With no individual leadership or hierarchy, all youth members come together as one united family to organize the celebrations, manage the pandap, prepare prasadams, and serve the devotees.
       </p>
     </div>
 
     <!-- Year 2022 -->
-    <div class="card-glass p-6 sm:p-8 rounded-2xl grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+    <div class="card-glass p-6 sm:p-8 rounded-3xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center group">
       <div>
-        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300">2022 Milestone</span>
-        <h3 class="font-heading font-bold text-xl text-amber-300 mt-2">Peacock Throne & Clay Idol</h3>
-        <p class="text-amber-100/80 text-sm mt-2 leading-relaxed">
-          The 2022 utsav featured the iconic Mayureshwar idol seated gracefully on a peacock throne, surrounded by traditional clay Ganesh idols offered by devotees.
+        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 inline-block mb-3">2022 Milestone</span>
+        <h3 class="font-heading font-bold text-2xl text-amber-300">Mayureshwar Peacock Avatar</h3>
+        <p class="text-amber-100/80 text-sm sm:text-base mt-3 leading-relaxed">
+          The 2022 utsav featured the magnificent Mayureshwar idol seated gracefully upon a royal peacock throne, surrounded by traditional sacred clay Ganesh idols offered with devotion.
         </p>
       </div>
-      <div class="h-64 rounded-xl overflow-hidden border border-amber-500/30">
-        <img src="IMG_20220903_125930.jpg" alt="2022 History" class="w-full h-full object-cover">
+      <div class="h-80 sm:h-96 md:h-[400px] rounded-2xl overflow-hidden border border-amber-500/30 bg-black/50 flex items-center justify-center shadow-lg">
+        <img src="IMG_20220903_125930.jpg" alt="2022 Ganesh Idol" class="w-full h-full object-contain md:object-cover object-top group-hover:scale-105 transition duration-500">
       </div>
     </div>
 
     <!-- Year 2023 -->
-    <div class="card-glass p-6 sm:p-8 rounded-2xl grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-      <div class="order-2 md:order-1 h-64 rounded-xl overflow-hidden border border-amber-500/30">
-        <img src="Screenshot_2023-09-18-23-12-08-00.jpg" alt="2023 History" class="w-full h-full object-cover">
+    <div class="card-glass p-6 sm:p-8 rounded-3xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center group">
+      <div class="order-2 md:order-1 h-80 sm:h-96 md:h-[400px] rounded-2xl overflow-hidden border border-amber-500/30 bg-black/50 flex items-center justify-center shadow-lg">
+        <img src="Screenshot_2023-09-18-23-12-08-00.jpg" alt="2023 Ganesh Mandapam" class="w-full h-full object-contain md:object-cover object-top group-hover:scale-105 transition duration-500">
       </div>
       <div class="order-1 md:order-2">
-        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300">2023 Milestone</span>
-        <h3 class="font-heading font-bold text-xl text-amber-300 mt-2">Royal Blue Floral Mandapam</h3>
-        <p class="text-amber-100/80 text-sm mt-2 leading-relaxed">
-          The youth designed a majestic royal setup with blue and white floral canopies, daily Deepotsavam, and community prasadam distribution for all visitors.
+        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 inline-block mb-3">2023 Milestone</span>
+        <h3 class="font-heading font-bold text-2xl text-amber-300">Royal Blue Floral Mandapam</h3>
+        <p class="text-amber-100/80 text-sm sm:text-base mt-3 leading-relaxed">
+          The youth designed a majestic royal setup featuring grand cyan and blue drapery, exquisite floral canopies, daily Deepotsavam, and widespread community prasadam distribution for all visitors.
         </p>
       </div>
     </div>
-     <!-- Year 2024 -->
-     <div class="card-glass p-6 sm:p-8 rounded-2xl grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-      <div class="order-1 md:order-2">
-        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300">2023 Milestone</span>
-        <h3 class="font-heading font-bold text-xl text-amber-300 mt-2">Royal Blue Floral Mandapam</h3>
-        <p class="text-amber-100/80 text-sm mt-2 leading-relaxed">
-          The youth designed a majestic setup with ganesh and white floral canopies, daily Deepotsavam, and community prasadam distribution for all visitors.
+
+    <!-- Year 2024 -->
+    <div class="card-glass p-6 sm:p-8 rounded-3xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center group">
+      <div>
+        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 inline-block mb-3">2024 Milestone</span>
+        <h3 class="font-heading font-bold text-2xl text-amber-300">Golden Crown & Yellow Dhoti Avatar</h3>
+        <p class="text-amber-100/80 text-sm sm:text-base mt-3 leading-relaxed">
+          A breathtaking darshan of Lord Ganesha in a golden crown and radiant yellow silk dhoti, set against lush green canopies with thousands of devotees joining the daily Aarti and prayers.
         </p>
       </div>
-      <div class="order-2 md:order-1 h-64 rounded-xl overflow-hidden border border-amber-500/30">
-        <img src="image.jpg" alt="2023 History" class="w-full h-full object-cover">
+      <div class="h-80 sm:h-96 md:h-[400px] rounded-2xl overflow-hidden border border-amber-500/30 bg-black/50 flex items-center justify-center shadow-lg">
+        <img src="IMG-20240907-WA0099.jpg" alt="2024 Ganesh Idol" class="w-full h-full object-contain md:object-cover object-top group-hover:scale-105 transition duration-500">
       </div>
     </div>
 
     <!-- Theme Setups & Bullock Cart -->
-    <div class="card-glass p-6 sm:p-8 rounded-2xl grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-        <div class="h-64 rounded-xl overflow-hidden border border-amber-500/30">
-        <img src="WhatsApp Image 2026-08-22 at 6.13.28 PM.jpeg" alt="Theme Decor" class="w-full h-full object-cover">
+    <div class="card-glass p-6 sm:p-8 rounded-3xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center group">
+      <div class="order-2 md:order-1 h-72 sm:h-80 md:h-[350px] rounded-2xl overflow-hidden border border-amber-500/30 bg-black/50 flex items-center justify-center shadow-lg">
+        <img src="WhatsApp Image 2026-08-22 at 6.13.28 PM.jpeg" alt="Village Theme Decor" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
       </div>
-      <div>
-        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300">Village & Celestial Theme</span>
-        <h3 class="font-heading font-bold text-xl text-amber-300 mt-2">Traditional Bullock Cart Decor</h3>
-        <p class="text-amber-100/80 text-sm mt-2 leading-relaxed">
-          Blending rural farming heritage with celestial starry ceiling art, Lord Ganesha was depicted on a decorated traditional bullock cart.
+      <div class="order-1 md:order-2">
+        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 inline-block mb-3">Special Theme</span>
+        <h3 class="font-heading font-bold text-2xl text-amber-300">Rural Heritage & Cosmic Decor</h3>
+        <p class="text-amber-100/80 text-sm sm:text-base mt-3 leading-relaxed">
+          Honoring our farming roots while reaching for the stars — this creative pandap blended a traditional Telangana bullock cart and village scene with a cosmic night sky ceiling.
         </p>
       </div>
-  
     </div>
 
   </section>
 
   <!-- FOOTER -->
   <footer class="py-8 bg-black/80 text-center text-xs text-amber-100/60 border-t border-orange-900/40">
-    <p>© Suvarnapuri Friends Youth Soan. Contact: 9959409270</p>
+    <p class="font-heading text-sm text-amber-300 font-bold mb-1">|| గణపతి బప్పా మోరియా ||</p>
+    <p>© Suvarnapuri Friends Youth Soan. Contact: <a href="tel:9959409270" class="text-amber-300 hover:underline">9959409270</a></p>
   </footer>
 
   <script>
