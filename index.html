@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suvarnapuri Friends Youth Soan | Ganesh Utsav</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { background-color: #0d0407; color: #FDFBF7; font-family: 'Poppins', sans-serif; }
+    .gold-gradient { background: linear-gradient(135deg, #FFE066 0%, #FFAA00 50%, #FF6B00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .saffron-gradient-bg { background: linear-gradient(135deg, #FF6B00 0%, #D84315 100%); }
+    .card-glass { background: rgba(30, 12, 18, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255, 215, 0, 0.2); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 card-glass border-b border-orange-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="GANESH TRANS.jpg" alt="Logo" class="w-12 h-12 object-contain rounded-full border border-amber-400/40">
+          <div>
+            <span class="font-heading text-lg font-bold text-amber-300 block leading-tight">SUVARNAPURI FRIENDS YOUTH</span>
+            <span class="text-xs uppercase tracking-widest text-orange-400 font-semibold">SOAN • GANESH UTSAV</span>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+          <a href="index.html" class="text-amber-400 font-semibold border-b-2 border-amber-400 pb-1">Home</a>
+          <a href="history.html" class="hover:text-amber-400 transition">Our History</a>
+          <a href="gallery.html" class="hover:text-amber-400 transition">Darshan Gallery</a>
+          <a href="members.html" class="hover:text-amber-400 transition">Youth Members</a>
+          <a href="contact.html" class="hover:text-amber-400 transition">Location & Seva</a>
+        </div>
+        <button id="menuBtn" class="md:hidden text-2xl text-amber-400"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden card-glass px-6 py-4 space-y-3">
+      <a href="index.html" class="block text-amber-400 font-bold">Home</a>
+      <a href="history.html" class="block text-amber-100 hover:text-amber-400">Our History</a>
+      <a href="gallery.html" class="block text-amber-100 hover:text-amber-400">Darshan Gallery</a>
+      <a href="members.html" class="block text-amber-100 hover:text-amber-400">Youth Members</a>
+      <a href="contact.html" class="block text-amber-100 hover:text-amber-400">Location & Seva</a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="py-16 px-4 max-w-7xl mx-auto text-center">
+    <img src="GANESH TRANS.jpg" alt="Suvarnapuri Youth Ganesh" class="w-32 h-32 mx-auto mb-6 drop-shadow-[0_0_25px_rgba(255,107,0,0.5)]">
+    
+    <div class="inline-block px-4 py-1 rounded-full card-glass border border-amber-500/40 text-amber-300 text-xs uppercase tracking-widest font-semibold mb-4">
+      || శ్రీ గణేశాయ నమః ||
+    </div>
+
+    <h1 class="text-3xl sm:text-5xl md:text-6xl font-heading font-black tracking-wide leading-tight">
+      <span class="gold-gradient">SUVARNAPURI FRIENDS YOUTH</span><br>
+      <span class="text-white text-2xl sm:text-4xl font-bold">SOAN</span>
+    </h1>
+
+    <p class="max-w-2xl mx-auto text-amber-100/80 text-sm sm:text-base mt-4 font-light">
+      Celebrating devotion, brotherhood, and cultural grandeur at Soan. Welcome to the official portal of our youth Ganesh festival.
+    </p>
+
+    <!-- AAGAMAN POSTER HIGHLIGHT -->
+    <div class="my-12 max-w-2xl mx-auto card-glass p-3 rounded-2xl border border-amber-500/40 shadow-2xl">
+      <img src="WhatsApp Image 2026-08-22 at 6.15.16 PM.jpg" alt="Aagaman Poster" class="w-full rounded-xl object-cover">
+      <div class="p-4 text-center">
+        <h3 class="font-heading font-bold text-lg text-amber-300">Grand Aagaman Celebrations</h3>
+        <p class="text-xs text-orange-400 mt-1">Organized with pride by Suvarnapuri Friends Youth Soan</p>
+      </div>
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="flex flex-wrap justify-center gap-4 mt-8">
+      <a href="gallery.html" class="px-8 py-3 rounded-full saffron-gradient-bg text-white font-semibold shadow-lg hover:scale-105 transition">
+        <i class="fa-solid fa-images mr-2"></i> View Ganesh Darshan
+      </a>
+      <a href="contact.html" class="px-8 py-3 rounded-full card-glass text-amber-300 font-semibold border border-amber-500/40 hover:bg-amber-500/10 transition">
+        <i class="fa-solid fa-location-dot mr-2"></i> Pandap Location
+      </a>
+    </div>
+  </section>
+
+  <!-- RECENT DARSHAN PREVIEW -->
+  <section class="py-12 bg-black/40 border-t border-b border-orange-900/30">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-end mb-8">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-orange-400 font-semibold">Festive Memories</span>
+          <h2 class="text-2xl sm:text-3xl font-heading font-bold gold-gradient">Ganesh Idols Glimpse</h2>
+        </div>
+        <a href="gallery.html" class="text-amber-400 text-xs sm:text-sm font-semibold hover:underline">View All <i class="fa-solid fa-arrow-right ml-1"></i></a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="card-glass rounded-2xl overflow-hidden group">
+          <div class="h-80 overflow-hidden">
+            <img src="IMG-20240907-WA0099.jpg" alt="2024 Ganesh" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-4">
+            <h4 class="font-heading font-bold text-amber-300 text-base">Grand 2024 Avatar</h4>
+            <p class="text-xs text-gray-400">Suvarnapuri Friends Youth</p>
+          </div>
+        </div>
+
+        <div class="card-glass rounded-2xl overflow-hidden group">
+          <div class="h-80 overflow-hidden">
+            <img src="Screenshot_2023-09-18-23-12-08-00.jpg" alt="2023 Ganesh" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-4">
+            <h4 class="font-heading font-bold text-amber-300 text-base">Royal Mandapam 2023</h4>
+            <p class="text-xs text-gray-400">Suvarnapuri Friends Youth</p>
+          </div>
+        </div>
+
+        <div class="card-glass rounded-2xl overflow-hidden group">
+          <div class="h-80 overflow-hidden">
+            <img src="IMG_20220903_125930.jpg" alt="2022 Ganesh" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-4">
+            <h4 class="font-heading font-bold text-amber-300 text-base">Mayureshwar 2022</h4>
+            <p class="text-xs text-gray-400">Suvarnapuri Friends Youth</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 bg-black/80 text-center text-xs text-amber-100/60 border-t border-orange-900/40">
+    <p class="font-heading text-sm text-amber-300 font-bold mb-1">|| గణపతి బప్పా మోరియా ||</p>
+    <p>© Suvarnapuri Friends Youth Soan. Helpline: 9959409270</p>
+  </footer>
+
+  <script>
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

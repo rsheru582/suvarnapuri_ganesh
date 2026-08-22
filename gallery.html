@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Darshan Gallery | Suvarnapuri Friends Youth Soan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { background-color: #0d0407; color: #FDFBF7; font-family: 'Poppins', sans-serif; }
+    .gold-gradient { background: linear-gradient(135deg, #FFE066 0%, #FFAA00 50%, #FF6B00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .card-glass { background: rgba(30, 12, 18, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255, 215, 0, 0.2); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 card-glass border-b border-orange-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="GANESH TRANS.jpg" alt="Logo" class="w-12 h-12 object-contain rounded-full border border-amber-400/40">
+          <div>
+            <span class="font-heading text-lg font-bold text-amber-300 block leading-tight">SUVARNAPURI FRIENDS YOUTH</span>
+            <span class="text-xs uppercase tracking-widest text-orange-400 font-semibold">SOAN</span>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+          <a href="index.html" class="hover:text-amber-400 transition">Home</a>
+          <a href="history.html" class="hover:text-amber-400 transition">Our History</a>
+          <a href="gallery.html" class="text-amber-400 font-semibold border-b-2 border-amber-400 pb-1">Darshan Gallery</a>
+          <a href="members.html" class="hover:text-amber-400 transition">Youth Members</a>
+          <a href="contact.html" class="hover:text-amber-400 transition">Location & Seva</a>
+        </div>
+        <button id="menuBtn" class="md:hidden text-2xl text-amber-400"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden card-glass px-6 py-4 space-y-3">
+      <a href="index.html" class="block text-amber-100 hover:text-amber-400">Home</a>
+      <a href="history.html" class="block text-amber-100 hover:text-amber-400">Our History</a>
+      <a href="gallery.html" class="block text-amber-400 font-bold">Darshan Gallery</a>
+      <a href="members.html" class="block text-amber-100 hover:text-amber-400">Youth Members</a>
+      <a href="contact.html" class="block text-amber-100 hover:text-amber-400">Location & Seva</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="py-12 text-center max-w-4xl mx-auto px-4">
+    <span class="text-xs uppercase tracking-widest text-orange-400 font-semibold">Divine Moments</span>
+    <h1 class="text-3xl sm:text-5xl font-heading font-bold gold-gradient mt-2">Ganesh Darshan Gallery</h1>
+    <p class="text-amber-100/80 text-sm mt-2">Click on any photo for full-screen darshan.</p>
+  </section>
+
+  <!-- GALLERY GRID -->
+  <section class="max-w-7xl mx-auto px-4 pb-20">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- 2024 Idol -->
+      <div class="card-glass rounded-2xl overflow-hidden cursor-pointer group" onclick="openModal('IMG-20240907-WA0099.jpg', 'Ganesh Idol 2024 - Suvarnapuri Friends Youth')">
+        <div class="h-80 overflow-hidden">
+          <img src="IMG-20240907-WA0099.jpg" alt="2024 Ganesh" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <div class="p-4 flex justify-between items-center">
+          <div>
+            <h4 class="font-heading font-bold text-amber-300 text-sm">Ganesh Avatar (2024)</h4>
+            <p class="text-xs text-gray-400">Yellow Dhoti & Golden Crown</p>
+          </div>
+          <span class="text-amber-400"><i class="fa-solid fa-expand"></i></span>
+        </div>
+      </div>
+
+      <!-- 2023 Idol -->
+      <div class="card-glass rounded-2xl overflow-hidden cursor-pointer group" onclick="openModal('Screenshot_2023-09-18-23-12-08-00.jpg', 'Royal Mandapam 2023')">
+        <div class="h-80 overflow-hidden">
+          <img src="Screenshot_2023-09-18-23-12-08-00.jpg" alt="2023 Ganesh" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <div class="p-4 flex justify-between items-center">
+          <div>
+            <h4 class="font-heading font-bold text-amber-300 text-sm">Royal Mandapam Setup (2023)</h4>
+            <p class="text-xs text-gray-400">Floral Throne & Evening Pooja</p>
+          </div>
+          <span class="text-amber-400"><i class="fa-solid fa-expand"></i></span>
+        </div>
+      </div>
+
+      <!-- 2022 Idol -->
+      <div class="card-glass rounded-2xl overflow-hidden cursor-pointer group" onclick="openModal('IMG_20220903_125930.jpg', 'Mayureshwar Avatar 2022')">
+        <div class="h-80 overflow-hidden">
+          <img src="IMG_20220903_125930.jpg" alt="2022 Ganesh" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <div class="p-4 flex justify-between items-center">
+          <div>
+            <h4 class="font-heading font-bold text-amber-300 text-sm">Mayureshwar Avatar (2022)</h4>
+            <p class="text-xs text-gray-400">Peacock Throne & Clay Ganapathis</p>
+          </div>
+          <span class="text-amber-400"><i class="fa-solid fa-expand"></i></span>
+        </div>
+      </div>
+
+      <!-- Bullock Cart Theme -->
+      <div class="card-glass rounded-2xl overflow-hidden cursor-pointer group" onclick="openModal('WhatsApp Image 2026-08-22 at 6.13.28 PM.jpeg', 'Village Bullock Cart Theme')">
+        <div class="h-80 overflow-hidden">
+          <img src="WhatsApp Image 2026-08-22 at 6.13.28 PM.jpeg" alt="Bullock Cart Theme" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <div class="p-4 flex justify-between items-center">
+          <div>
+            <h4 class="font-heading font-bold text-amber-300 text-sm">Rural Heritage Theme</h4>
+            <p class="text-xs text-gray-400">Bullock Cart & Cosmic Ceiling</p>
+          </div>
+          <span class="text-amber-400"><i class="fa-solid fa-expand"></i></span>
+        </div>
+      </div>
+
+      <!-- Aagaman Poster -->
+      <div class="card-glass rounded-2xl overflow-hidden cursor-pointer group" onclick="openModal('WhatsApp Image 2026-08-22 at 6.15.16 PM.jpg', 'Aagaman Poster')">
+        <div class="h-80 overflow-hidden">
+          <img src="WhatsApp Image 2026-08-22 at 6.15.16 PM.jpg" alt="Aagaman Poster" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <div class="p-4 flex justify-between items-center">
+          <div>
+            <h4 class="font-heading font-bold text-amber-300 text-sm">Aagaman Official Poster</h4>
+            <p class="text-xs text-gray-400">Suvarnapuri Friends Youth Soan</p>
+          </div>
+          <span class="text-amber-400"><i class="fa-solid fa-expand"></i></span>
+        </div>
+      </div>
+
+      <!-- Official Logo -->
+      <div class="card-glass rounded-2xl overflow-hidden cursor-pointer group flex flex-col justify-center items-center p-6 text-center" onclick="openModal('GANESH TRANS.jpg', 'Official Youth Emblem')">
+        <img src="GANESH TRANS.jpg" alt="Logo Emblem" class="w-48 h-48 object-contain">
+        <h4 class="font-heading font-bold text-amber-300 text-sm mt-4">Official Youth Emblem</h4>
+        <p class="text-xs text-orange-400">Suvarnapuri Friends Youth Soan</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="imageModal" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4">
+    <button onclick="closeModal()" class="absolute top-6 right-6 text-white text-3xl hover:text-amber-400"><i class="fa-solid fa-xmark"></i></button>
+    <div class="max-w-4xl w-full text-center">
+      <img id="modalImg" src="" alt="Full view" class="max-h-[80vh] mx-auto rounded-xl border border-amber-500/40 object-contain shadow-2xl">
+      <h3 id="modalCaption" class="mt-4 font-heading text-lg font-bold text-amber-300"></h3>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="py-8 bg-black/80 text-center text-xs text-amber-100/60 border-t border-orange-900/40">
+    <p>© Suvarnapuri Friends Youth Soan. Contact: 9959409270</p>
+  </footer>
+
+  <script>
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+    function openModal(src, caption) {
+      document.getElementById('modalImg').src = src;
+      document.getElementById('modalCaption').innerText = caption;
+      document.getElementById('imageModal').classList.remove('hidden');
+    }
+    function closeModal() {
+      document.getElementById('imageModal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
