@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,144 +7,194 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Canvas Confetti for Marigold Flower Shower -->
+  <!-- Canvas Confetti for Marigold Petals -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
-    body { background-color: #0d0407; color: #FDFBF7; font-family: 'Poppins', sans-serif; }
-    .gold-gradient { background: linear-gradient(135deg, #FFE066 0%, #FFAA00 50%, #FF6B00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .saffron-gradient-bg { background: linear-gradient(135deg, #FF6B00 0%, #D84315 100%); }
-    .card-glass { background: rgba(30, 12, 18, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255, 215, 0, 0.2); }
+    body { 
+      background-color: #080305; 
+      color: #FDFBF7; 
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    
     .font-heading { font-family: 'Cinzel', serif; }
+
+    /* Animated Gold Text Gradient */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF099 0%, #FFB703 50%, #FB8500 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Ambient Pulsing Glow */
+    .aura-glow {
+      box-shadow: 0 0 60px 20px rgba(255, 153, 0, 0.25);
+    }
+
+    /* Glassmorphic Cards with Golden Border */
+    .glass-panel {
+      background: radial-gradient(100% 100% at 50% 0%, rgba(45, 20, 10, 0.45) 0%, rgba(18, 7, 12, 0.75) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 191, 0, 0.18);
+    }
+
+    .glass-panel:hover {
+      border-color: rgba(255, 191, 0, 0.45);
+      box-shadow: 0 10px 30px -10px rgba(255, 107, 0, 0.3);
+    }
+
+    /* Rotating Sacred Chakra Aura */
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+      animation: spin-slow 28s linear infinite;
+    }
+
+    /* Floating Divine Float Animation */
+    @keyframes divine-float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-10px) scale(1.02); }
+    }
+    .animate-float {
+      animation: divine-float 5s ease-in-out infinite;
+    }
   </style>
 </head>
-<body class="antialiased">
+<body class="antialiased relative selection:bg-amber-500 selection:text-black">
 
-  <!-- FLOATING FESTIVE ACTION CONTROLS -->
-  <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-    <!-- Ring Bell Button -->
-    <button id="ringBellBtn" onclick="ringTempleBell()" title="గుడి గంట మోగించండి (Ring Bell)"
-      class="w-14 h-14 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-amber-500 text-black shadow-lg shadow-orange-500/50 border-2 border-amber-200 flex items-center justify-center text-2xl hover:scale-110 active:scale-90 transition duration-300">
-      🔔
-    </button>
+  <!-- BACKGROUND PARTICLE CANVAS -->
+  <canvas id="particleCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-    <!-- Background Aarti / Music Toggle -->
+  <!-- FLOATING DEVOTIONAL AUDIO TOGGLE -->
+  <div class="fixed bottom-6 right-6 z-50">
     <button id="bgMusicBtn" onclick="toggleBGM()" title="Devotional Music"
-      class="w-14 h-14 rounded-full bg-black/80 backdrop-blur-md border border-amber-400/50 text-amber-400 shadow-xl flex items-center justify-center text-xl hover:border-amber-300 hover:scale-110 transition duration-300">
+      class="w-14 h-14 rounded-full glass-panel border border-amber-400/40 text-amber-300 shadow-2xl flex items-center justify-center text-xl hover:scale-110 active:scale-95 transition-all duration-300">
       🎵
     </button>
   </div>
 
-  <!-- Ambient Devotional Audio -->
   <audio id="bgDevotionalAudio" loop preload="none">
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=temple-bell-chant-21443.mp3" type="audio/mpeg">
   </audio>
 
   <!-- NAVBAR -->
-  <nav class="sticky top-0 z-40 card-glass border-b border-orange-900/50">
+  <nav class="sticky top-0 z-40 glass-panel border-b border-orange-950/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
-        <a href="index.html" class="flex items-center space-x-3">
-          <img src="GANESH TRANS.png" alt="Logo" class="w-12 h-12 object-contain rounded-full border border-amber-400/40">
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="relative">
+            <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 opacity-40 blur group-hover:opacity-75 transition"></div>
+            <img src="GANESH TRANS.png" alt="Logo" class="relative w-12 h-12 object-contain rounded-full border border-amber-400/50">
+          </div>
           <div>
-            <span class="font-heading text-lg font-bold text-amber-300 block leading-tight">SUVARNAPURI FRIENDS YOUTH</span>
-            <span class="text-xs uppercase tracking-widest text-orange-400 font-semibold">SOAN • GANESH UTSAV</span>
+            <span class="font-heading text-lg font-bold text-amber-300 block leading-tight tracking-wide">SUVARNAPURI FRIENDS YOUTH</span>
+            <span class="text-[11px] uppercase tracking-widest text-orange-400 font-semibold">SOAN • GANESH UTSAV</span>
           </div>
         </a>
         <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
           <a href="index.html" class="text-amber-400 font-semibold border-b-2 border-amber-400 pb-1">Home</a>
-          <a href="history.html" class="hover:text-amber-400 transition">Our History</a>
-          <a href="gallery.html" class="hover:text-amber-400 transition">Ganesh Gallery</a>
-          <a href="members.html" class="hover:text-amber-400 transition">Youth Members</a>
-          <a href="contact.html" class="hover:text-amber-400 transition">Location</a>
+          <a href="history.html" class="hover:text-amber-300 transition">Our History</a>
+          <a href="gallery.html" class="hover:text-amber-300 transition">Ganesh Gallery</a>
+          <a href="members.html" class="hover:text-amber-300 transition">Youth Members</a>
+          <a href="contact.html" class="hover:text-amber-300 transition">Location</a>
         </div>
-        <button id="menuBtn" class="md:hidden text-2xl text-amber-400"><i class="fa-solid fa-bars"></i></button>
+        <button id="menuBtn" class="md:hidden text-2xl text-amber-400 focus:outline-none"><i class="fa-solid fa-bars"></i></button>
       </div>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden card-glass px-6 py-4 space-y-3">
+    <div id="mobileMenu" class="hidden md:hidden glass-panel px-6 py-5 space-y-3 border-t border-amber-500/20">
       <a href="index.html" class="block text-amber-400 font-bold">Home</a>
-      <a href="history.html" class="block text-amber-100 hover:text-amber-400">Our History</a>
-      <a href="gallery.html" class="block text-amber-100 hover:text-amber-400">Ganesh Gallery</a>
-      <a href="members.html" class="block text-amber-100 hover:text-amber-400">Youth Members</a>
-      <a href="contact.html" class="block text-amber-100 hover:text-amber-400">Location</a>
+      <a href="history.html" class="block text-amber-100/90 hover:text-amber-300">Our History</a>
+      <a href="gallery.html" class="block text-amber-100/90 hover:text-amber-300">Ganesh Gallery</a>
+      <a href="members.html" class="block text-amber-100/90 hover:text-amber-300">Youth Members</a>
+      <a href="contact.html" class="block text-amber-100/90 hover:text-amber-300">Location</a>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <section class="py-16 px-4 max-w-7xl mx-auto text-center">
-    <img src="GANESH TRANS.png" alt="Suvarnapuri Youth Ganesh" class="w-32 h-32 mx-auto mb-6 drop-shadow-[0_0_25px_rgba(255,107,0,0.5)]">
+  <!-- HERO SECTION WITH DIVINE AURA -->
+  <section class="relative z-10 pt-12 pb-20 px-4 max-w-7xl mx-auto text-center">
     
-    <div class="inline-block px-4 py-1 rounded-full card-glass border border-amber-500/40 text-amber-300 text-xs uppercase tracking-widest font-semibold mb-4">
-      || శ్రీ గణేశాయ నమః ||
+    <!-- Rotating Celestial Halo Glow -->
+    <div class="relative w-48 h-48 mx-auto mb-6 flex items-center justify-center">
+      <div class="absolute inset-0 rounded-full border border-dashed border-amber-400/40 animate-spin-slow"></div>
+      <div class="absolute -inset-4 rounded-full bg-gradient-to-tr from-amber-600/30 to-orange-600/10 blur-xl aura-glow"></div>
+      <img src="GANESH TRANS.png" alt="Suvarnapuri Youth Ganesh" class="relative z-10 w-36 h-36 object-contain animate-float drop-shadow-[0_10px_25px_rgba(255,140,0,0.6)]">
+    </div>
+    
+    <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full glass-panel border border-amber-400/30 text-amber-300 text-xs uppercase tracking-widest font-semibold mb-5 shadow-lg">
+      <i class="fa-solid fa-om text-orange-400"></i> || శ్రీ గణేశాయ నమః || <i class="fa-solid fa-om text-orange-400"></i>
     </div>
 
-    <h1 class="text-3xl sm:text-5xl md:text-6xl font-heading font-black tracking-wide leading-tight">
-      <span class="gold-gradient">SUVARNAPURI FRIENDS YOUTH</span><br>
-      <span class="text-white text-2xl sm:text-4xl font-bold">SOAN</span>
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-heading font-black tracking-wide leading-tight">
+      <span class="gold-gradient-text">SUVARNAPURI FRIENDS YOUTH</span><br>
+      <span class="text-white text-3xl sm:text-5xl font-bold tracking-normal">SOAN</span>
     </h1>
 
-    <p class="max-w-2xl mx-auto text-amber-100/80 text-sm sm:text-base mt-4 font-light">
-      Celebrating devotion, and cultural grandeur at Soan. Welcome to the official portal of our youth Ganesh festival.
+    <p class="max-w-2xl mx-auto text-amber-100/80 text-sm sm:text-base mt-5 font-light leading-relaxed">
+      Celebrating devotion, unity, and cultural grandeur at Soan. Welcome to the official web portal of our youth Ganesh festival.
     </p>
 
-    <!-- AAGAMAN POSTER HIGHLIGHT -->
-    <div class="my-12 max-w-2xl mx-auto card-glass p-3 rounded-2xl border border-amber-500/40 shadow-2xl">
-      <img src="WhatsApp Image 2026-08-22 at 6.13.28 PM.jpeg" alt="Upcoming Utsav Celebrations" class="w-full rounded-xl object-cover">
-      <div class="p-4 text-center">
-        <h3 class="font-heading font-bold text-lg text-amber-300">Grand Celebrations Coming Soon</h3>
-        <p class="text-xs text-orange-400 mt-1">Organized with pride by Suvarnapuri Friends Youth Soan</p>
+    <!-- AAGAMAN POSTER SHOWCASE -->
+    <div class="my-14 max-w-2xl mx-auto glass-panel p-3.5 rounded-3xl border border-amber-400/30 shadow-2xl transition duration-500 hover:scale-[1.01]">
+      <img src="WhatsApp Image 2026-08-22 at 6.13.28 PM.jpeg" alt="Upcoming Utsav Celebrations" class="w-full rounded-2xl object-cover">
+      <div class="p-5 text-center">
+        <h3 class="font-heading font-bold text-xl text-amber-300">Grand Celebrations Coming Soon</h3>
+        <p class="text-xs text-orange-400 tracking-wider uppercase font-semibold mt-1">Organized with pride by Suvarnapuri Friends Youth Soan</p>
       </div>
     </div>
 
     <!-- QUICK ACTIONS -->
-    <div class="flex flex-wrap justify-center gap-4 mt-8">
-      <button onclick="ringTempleBell()" class="px-8 py-3 rounded-full bg-gradient-to-r from-amber-400 to-yellow-400 text-black font-bold shadow-lg shadow-amber-400/30 hover:scale-105 active:scale-95 transition">
-        🔔 Ring Temple Bell
+    <div class="flex flex-wrap justify-center gap-4 mt-6">
+      <button onclick="triggerPetalShower()" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-amber-500 text-black font-bold shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-105 active:scale-95 transition-all">
+        🌸 Shower Blessings
       </button>
-      <a href="gallery.html" class="px-8 py-3 rounded-full saffron-gradient-bg text-white font-semibold shadow-lg hover:scale-105 transition">
-        <i class="fa-solid fa-images mr-2"></i> View Ganesh Images
+      <a href="gallery.html" class="px-8 py-3.5 rounded-full glass-panel text-amber-300 font-semibold border border-amber-400/30 hover:border-amber-400 hover:bg-amber-400/10 transition">
+        <i class="fa-solid fa-images mr-2 text-orange-400"></i> Ganesh Idols Gallery
       </a>
-      <a href="contact.html" class="px-8 py-3 rounded-full card-glass text-amber-300 font-semibold border border-amber-500/40 hover:bg-amber-500/10 transition">
-        <i class="fa-solid fa-location-dot mr-2"></i> Pandal Location
+      <a href="contact.html" class="px-8 py-3.5 rounded-full glass-panel text-amber-300 font-semibold border border-amber-400/30 hover:border-amber-400 hover:bg-amber-400/10 transition">
+        <i class="fa-solid fa-location-dot mr-2 text-orange-400"></i> Pandal Location
       </a>
     </div>
   </section>
 
   <!-- DAILY POOJA & PROGRAM SCHEDULE -->
-  <section class="py-16 px-4 max-w-7xl mx-auto">
-    <div class="text-center mb-10">
+  <section class="relative z-10 py-16 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-12">
       <span class="text-xs uppercase tracking-widest text-orange-400 font-semibold">|| నిత్య పూజా కార్యక్రమాలు ||</span>
-      <h2 class="text-2xl sm:text-3xl font-heading font-bold gold-gradient mt-1">Daily Pooja & Events Schedule</h2>
-      <p class="text-amber-100/60 text-xs sm:text-sm mt-1">Join us every day with family and friends for divine darshan and prasad</p>
+      <h2 class="text-3xl sm:text-4xl font-heading font-bold gold-gradient-text mt-1.5">Daily Pooja & Program Schedule</h2>
+      <p class="text-amber-100/60 text-xs sm:text-sm mt-2">Join us daily with family and friends for divine darshan and prasad</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="card-glass p-6 rounded-2xl border border-amber-500/30 hover:border-amber-400/60 transition duration-300">
-        <div class="text-3xl mb-3">🌅</div>
-        <h3 class="text-lg font-bold text-amber-300 font-heading">ఉదయపు విశేష పూజ & హారతి</h3>
-        <p class="text-orange-400 font-semibold text-sm mt-1">07:30 AM Daily</p>
-        <p class="text-amber-100/70 text-xs sm:text-sm mt-2 leading-relaxed">
+      <div class="glass-panel p-7 rounded-3xl transition duration-300 group">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">🌅</div>
+        <h3 class="text-lg font-bold text-amber-200 font-heading">ఉదయపు విశేష పూజ & హారతి</h3>
+        <p class="text-orange-400 font-bold text-sm mt-1">07:30 AM Daily</p>
+        <p class="text-amber-100/70 text-sm mt-2.5 leading-relaxed">
           Morning archana, Ganapati Atharvashirsha parayanam, and prasad distribution to all devotees.
         </p>
       </div>
 
-      <div class="card-glass p-6 rounded-2xl border border-amber-500/30 hover:border-amber-400/60 transition duration-300">
-        <div class="text-3xl mb-3">🪔</div>
-        <h3 class="text-lg font-bold text-amber-300 font-heading">సాయంత్రం మహా దీపారాధన</h3>
-        <p class="text-orange-400 font-semibold text-sm mt-1">07:30 PM Daily</p>
-        <p class="text-amber-100/70 text-xs sm:text-sm mt-2 leading-relaxed">
+      <div class="glass-panel p-7 rounded-3xl transition duration-300 group">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">🪔</div>
+        <h3 class="text-lg font-bold text-amber-200 font-heading">సాయంత్రం మహా దీపారాధన</h3>
+        <p class="text-orange-400 font-bold text-sm mt-1">07:30 PM Daily</p>
+        <p class="text-amber-100/70 text-sm mt-2.5 leading-relaxed">
           Grand evening dhoop-deepa aarti, dhol-tasha beats, youth bhajans, and special cultural events.
         </p>
       </div>
 
-      <div class="card-glass p-6 rounded-2xl border border-amber-500/30 hover:border-amber-400/60 transition duration-300">
-        <div class="text-3xl mb-3">🍲</div>
-        <h3 class="text-lg font-bold text-amber-300 font-heading">మహా అన్నదానం & నిమజ్జనం</h3>
-        <p class="text-orange-400 font-semibold text-sm mt-1">Grand Visarjan Day • 11:30 AM</p>
-        <p class="text-amber-100/70 text-xs sm:text-sm mt-2 leading-relaxed">
+      <div class="glass-panel p-7 rounded-3xl transition duration-300 group">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">🍲</div>
+        <h3 class="text-lg font-bold text-amber-200 font-heading">మహా అన్నదానం & నిమజ్జనం</h3>
+        <p class="text-orange-400 font-bold text-sm mt-1">Grand Visarjan Day • 11:30 AM</p>
+        <p class="text-amber-100/70 text-sm mt-2.5 leading-relaxed">
           Grand community Annadanam followed by the famous Laddu auction and prestigious immersion procession.
         </p>
       </div>
@@ -152,44 +202,49 @@
   </section>
 
   <!-- RECENT DARSHAN PREVIEW -->
-  <section class="py-12 bg-black/40 border-t border-b border-orange-900/30">
+  <section class="relative z-10 py-16 bg-black/60 border-t border-b border-orange-950/60">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="flex justify-between items-end mb-8">
+      <div class="flex justify-between items-end mb-10">
         <div>
           <span class="text-xs uppercase tracking-widest text-orange-400 font-semibold">Festive Memories</span>
-          <h2 class="text-2xl sm:text-3xl font-heading font-bold gold-gradient">Ganesh Idols Glimpse</h2>
+          <h2 class="text-2xl sm:text-3xl font-heading font-bold gold-gradient-text mt-1">Ganesh Idols Glimpse</h2>
         </div>
-        <a href="gallery.html" class="text-amber-400 text-xs sm:text-sm font-semibold hover:underline">View All <i class="fa-solid fa-arrow-right ml-1"></i></a>
+        <a href="gallery.html" class="text-amber-400 text-xs sm:text-sm font-semibold hover:underline flex items-center gap-1.5">
+          View All <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div class="card-glass rounded-2xl overflow-hidden group">
-          <div class="h-80 overflow-hidden">
-            <img src="IMG-20240907-WA0099.jpg" alt="2024 Ganesh" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="glass-panel rounded-3xl overflow-hidden group">
+          <div class="h-80 overflow-hidden relative">
+            <img src="IMG-20240907-WA0099.jpg" alt="2024 Ganesh" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition"></div>
           </div>
-          <div class="p-4">
+          <div class="p-5">
             <h4 class="font-heading font-bold text-amber-300 text-base">Grand 2024 Avatar</h4>
-            <p class="text-xs text-gray-400">Suvarnapuri Friends Youth</p>
+            <p class="text-xs text-gray-400 mt-0.5">Suvarnapuri Friends Youth</p>
           </div>
         </div>
 
-        <div class="card-glass rounded-2xl overflow-hidden group">
-          <div class="h-80 overflow-hidden">
-            <img src="Screenshot_2023-09-18-23-12-08-00.jpg" alt="2023 Ganesh" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="glass-panel rounded-3xl overflow-hidden group">
+          <div class="h-80 overflow-hidden relative">
+            <img src="Screenshot_2023-09-18-23-12-08-00.jpg" alt="2023 Ganesh" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition"></div>
           </div>
-          <div class="p-4">
+          <div class="p-5">
             <h4 class="font-heading font-bold text-amber-300 text-base">Royal Mandapam 2023</h4>
-            <p class="text-xs text-gray-400">Suvarnapuri Friends Youth</p>
+            <p class="text-xs text-gray-400 mt-0.5">Suvarnapuri Friends Youth</p>
           </div>
         </div>
 
-        <div class="card-glass rounded-2xl overflow-hidden group">
-          <div class="h-80 overflow-hidden">
-            <img src="IMG_20220903_125930.jpg" alt="2022 Ganesh" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="glass-panel rounded-3xl overflow-hidden group">
+          <div class="h-80 overflow-hidden relative">
+            <img src="IMG_20220903_125930.jpg" alt="2022 Ganesh" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition"></div>
           </div>
-          <div class="p-4">
+          <div class="p-5">
             <h4 class="font-heading font-bold text-amber-300 text-base">Mayureshwar 2022</h4>
-            <p class="text-xs text-gray-400">Suvarnapuri Friends Youth</p>
+            <p class="text-xs text-gray-400 mt-0.5">Suvarnapuri Friends Youth</p>
           </div>
         </div>
       </div>
@@ -197,44 +252,31 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-8 bg-black/80 text-center text-xs text-amber-100/60 border-t border-orange-900/40">
-    <p class="font-heading text-sm text-amber-300 font-bold mb-1">|| గణపతి బప్పా మోరియా ||</p>
+  <footer class="relative z-10 py-10 bg-black/90 text-center text-xs text-amber-100/60 border-t border-orange-950/80">
+    <p class="font-heading text-sm text-amber-300 font-bold mb-1.5">|| గణపతి బప్పా మోరియా ||</p>
     <p>© Suvarnapuri Friends Youth Soan. Helpline: 7659875800</p>
   </footer>
 
   <!-- SCRIPT LOGIC -->
   <script>
-    // Mobile Navigation Toggle
+    // 1. Mobile Menu Toggle
     document.getElementById('menuBtn').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.toggle('hidden');
     });
 
-    // 1. Ring Temple Bell + Marigold Shower
-    function ringTempleBell() {
-      const bellBtn = document.getElementById('ringBellBtn');
-      
-      // Wobble animation
-      bellBtn.style.transform = 'scale(1.2) rotate(15deg)';
-      setTimeout(() => { bellBtn.style.transform = 'scale(1.2) rotate(-15deg)'; }, 150);
-      setTimeout(() => { bellBtn.style.transform = 'scale(1)'; }, 350);
-
-      // Play Bell Sound
-      const bellAudio = new Audio('https://cdn.freesound.org/previews/337/337049_3232293-lq.mp3');
-      bellAudio.volume = 0.8;
-      bellAudio.play().catch(e => console.log('Audio autoplay prevented:', e));
-
-      // Flower Shower Effect
+    // 2. Interactive Flower Shower Animation
+    function triggerPetalShower() {
       if (window.confetti) {
         confetti({
-          particleCount: 65,
-          spread: 80,
-          origin: { y: 0.7 },
-          colors: ['#FF9933', '#FFD700', '#FF4500', '#FFFFFF', '#FFAA00']
+          particleCount: 80,
+          spread: 85,
+          origin: { y: 0.6 },
+          colors: ['#FF9933', '#FFD700', '#FF4500', '#FFF8DC', '#FFAA00']
         });
       }
     }
 
-    // 2. Background Devotional Audio Toggle
+    // 3. Background Devotional Audio Toggle
     let isPlayingMusic = false;
     function toggleBGM() {
       const audio = document.getElementById('bgDevotionalAudio');
@@ -244,16 +286,77 @@
         audio.pause();
         musicBtn.innerHTML = '🎵';
         musicBtn.classList.remove('border-emerald-400', 'text-emerald-400');
-        musicBtn.classList.add('border-amber-400/50', 'text-amber-400');
+        musicBtn.classList.add('border-amber-400/40', 'text-amber-300');
       } else {
         audio.play().then(() => {
           musicBtn.innerHTML = '🔊';
-          musicBtn.classList.remove('border-amber-400/50', 'text-amber-400');
+          musicBtn.classList.remove('border-amber-400/40', 'text-amber-300');
           musicBtn.classList.add('border-emerald-400', 'text-emerald-400');
-        }).catch(e => console.log('Audio playback blocked:', e));
+        }).catch(e => console.log('Audio playback prevented:', e));
       }
       isPlayingMusic = !isPlayingMusic;
     }
+
+    // 4. Lightweight Background Floating Ember Particles
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + Math.random() * 20;
+        this.size = Math.random() * 2.2 + 0.6;
+        this.speedY = Math.random() * 0.7 + 0.3;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.opacity = Math.random() * 0.6 + 0.2;
+        this.color = Math.random() > 0.4 ? '#FFAA00' : '#FF5500';
+      }
+      update() {
+        this.y -= this.speedY;
+        this.x += this.speedX;
+        if (this.y < -10) this.reset();
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.opacity;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const count = Math.min(window.innerWidth / 18, 55);
+      for (let i = 0; i < count; i++) {
+        const p = new Particle();
+        p.y = Math.random() * canvas.height;
+        particles.push(p);
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+
+    initParticles();
+    animateParticles();
   </script>
 </body>
 </html>
