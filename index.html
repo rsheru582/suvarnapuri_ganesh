@@ -65,6 +65,32 @@
     .animate-float {
       animation: divine-float 5s ease-in-out infinite;
     }
+    /* Animated sliding glow underline on hover */
+.nav-item {
+  position: relative;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #FFE066, #FF9900);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 4px;
+}
+
+.nav-item:hover::after,
+.nav-item.active-nav::after {
+  width: 75%;
+}
+
+.active-nav {
+  background: rgba(255, 170, 0, 0.08);
+}
   </style>
 </head>
 <body class="antialiased relative selection:bg-amber-500 selection:text-black">
@@ -85,37 +111,65 @@
   </audio>
 
   <!-- NAVBAR -->
-  <nav class="sticky top-0 z-40 glass-panel border-b border-orange-950/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <a href="index.html" class="flex items-center space-x-3 group">
-          <div class="relative">
-            <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 opacity-40 blur group-hover:opacity-75 transition"></div>
-            <img src="GANESH TRANS.png" alt="Logo" class="relative w-12 h-12 object-contain rounded-full border border-amber-400/50">
-          </div>
-          <div>
-            <span class="font-heading text-lg font-bold text-amber-300 block leading-tight tracking-wide">SUVARNAPURI FRIENDS YOUTH</span>
-            <span class="text-[11px] uppercase tracking-widest text-orange-400 font-semibold">SOAN • GANESH UTSAV</span>
-          </div>
-        </a>
-        <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
-          <a href="index.html" class="text-amber-400 font-semibold border-b-2 border-amber-400 pb-1">Home</a>
-          <a href="history.html" class="hover:text-amber-300 transition">Our History</a>
-          <a href="gallery.html" class="hover:text-amber-300 transition">Ganesh Gallery</a>
-          <a href="members.html" class="hover:text-amber-300 transition">Youth Members</a>
-          <a href="contact.html" class="hover:text-amber-300 transition">Location</a>
+ <!-- ULTRA-MODERN FESTIVE NAVBAR -->
+<nav class="sticky top-0 z-50 bg-[#0d0407]/80 backdrop-blur-md border-b border-amber-500/20 transition-all duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Logo + Branding -->
+      <a href="index.html" class="flex items-center space-x-3.5 group">
+        <div class="relative flex items-center justify-center">
+          <!-- Animated Logo Glow -->
+          <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-400 opacity-40 blur-sm group-hover:opacity-80 group-hover:blur-md transition-all duration-300"></div>
+          <img src="GANESH TRANS.png" alt="Logo" class="relative w-12 h-12 object-contain rounded-full border border-amber-400/60 p-0.5 bg-black/40 shadow-inner group-hover:scale-105 transition-transform duration-300">
         </div>
-        <button id="menuBtn" class="md:hidden text-2xl text-amber-400 focus:outline-none"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <span class="font-heading text-lg sm:text-xl font-black tracking-wider bg-gradient-to-r from-amber-200 via-yellow-400 to-orange-400 bg-clip-text text-transparent block leading-tight">
+            SUVARNAPURI FRIENDS YOUTH
+          </span>
+          <span class="text-[11px] uppercase tracking-[0.25em] text-orange-400 font-bold flex items-center gap-1.5 mt-0.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse"></span>
+            SOAN • GANESH UTSAV
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <div class="hidden md:flex items-center space-x-1 lg:space-x-2 font-medium text-sm">
+        <a href="index.html" class="nav-item active-nav px-4 py-2 rounded-full text-amber-300 font-semibold relative transition-all duration-300">
+          Home
+        </a>
+        <a href="history.html" class="nav-item px-4 py-2 rounded-full text-amber-100/80 hover:text-amber-300 transition-all duration-300">
+          Our History
+        </a>
+        <a href="gallery.html" class="nav-item px-4 py-2 rounded-full text-amber-100/80 hover:text-amber-300 transition-all duration-300">
+          Ganesh Gallery
+        </a>
+        <a href="members.html" class="nav-item px-4 py-2 rounded-full text-amber-100/80 hover:text-amber-300 transition-all duration-300">
+          Youth Members
+        </a>
+        <a href="contact.html" class="ml-2 px-5 py-2 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-400/40 text-amber-300 font-semibold hover:border-amber-400 hover:bg-amber-400/20 hover:scale-105 active:scale-95 transition-all duration-300">
+          Location
+        </a>
       </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="menuBtn" class="md:hidden w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-center text-amber-400 hover:bg-amber-500/20 transition focus:outline-none">
+        <i class="fa-solid fa-bars text-lg"></i>
+      </button>
+
     </div>
-    <div id="mobileMenu" class="hidden md:hidden glass-panel px-6 py-5 space-y-3 border-t border-amber-500/20">
-      <a href="index.html" class="block text-amber-400 font-bold">Home</a>
-      <a href="history.html" class="block text-amber-100/90 hover:text-amber-300">Our History</a>
-      <a href="gallery.html" class="block text-amber-100/90 hover:text-amber-300">Ganesh Gallery</a>
-      <a href="members.html" class="block text-amber-100/90 hover:text-amber-300">Youth Members</a>
-      <a href="contact.html" class="block text-amber-100/90 hover:text-amber-300">Location</a>
-    </div>
-  </nav>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-[#12070c]/95 backdrop-blur-xl px-6 py-5 space-y-3 border-t border-amber-500/20">
+    <a href="index.html" class="block px-3 py-2 rounded-lg bg-amber-500/10 text-amber-300 font-bold">Home</a>
+    <a href="history.html" class="block px-3 py-2 rounded-lg text-amber-100/80 hover:text-amber-300 hover:bg-white/5 transition">Our History</a>
+    <a href="gallery.html" class="block px-3 py-2 rounded-lg text-amber-100/80 hover:text-amber-300 hover:bg-white/5 transition">Ganesh Gallery</a>
+    <a href="members.html" class="block px-3 py-2 rounded-lg text-amber-100/80 hover:text-amber-300 hover:bg-white/5 transition">Youth Members</a>
+    <a href="contact.html" class="block px-3 py-2 rounded-lg text-amber-100/80 hover:text-amber-300 hover:bg-white/5 transition">Location</a>
+  </div>
+</nav>
 
   <!-- HERO SECTION WITH DIVINE AURA -->
   <section class="relative z-10 pt-12 pb-20 px-4 max-w-7xl mx-auto text-center">
